@@ -4,16 +4,16 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTasksTable extends Migration
+class CreateMessagesTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-     public function up()
+   public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
+        Schema::create('messages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('content');    // content カラム追加
             $table->timestamps();
@@ -25,16 +25,8 @@ class CreateTasksTable extends Migration
      *
      * @return void
      */
-  public function up()
-    {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->string('status');
-        });
-    }
-
     public function down()
     {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->dropColumn('status');
-        });
+        Schema::dropIfExists('messages');
     }
+}
