@@ -12,6 +12,8 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    <li>{!! link_to_route('signup.get', 'Signup') !!}</li>
+                    <li><a href="#">Login</a></li>
                     @if (Auth::check())
                         <li><a href="#">Users</a></li>
                         <li class="dropdown">
