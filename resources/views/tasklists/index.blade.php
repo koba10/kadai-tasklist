@@ -4,7 +4,7 @@
 
     <h1>タスク一覧</h1>
 
-   @if (count($tasks) > 0)
+   @if (count($tasklists) > 0)
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -14,15 +14,15 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($tasks as $task)
+                @foreach ($tasklists as $tasklist)
                     <tr>
-                        <td>{!! link_to_route('tasks.show', $task->id, ['id' => $task->id]) !!}</td>
-                        <td>{{ $task->status }}</td>
-                        <td>{{ $task->content }}</td>
+                        <td>{!! link_to_route('tasklists.show', $tasklist->id, ['id' => $tasklist->id]) !!}</td>
+                        <td>{{ $tasklist->status }}</td>
+                        <td>{{ $tasklist->content }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     @endif
- {!! link_to_route('tasks.create', '新規タスクの投稿', null, ['class' => 'btn btn-primary']) !!}
+ {!! link_to_route('tasklists.create', '新規タスクの投稿', null, ['class' => 'btn btn-primary']) !!}
 </@endsection>
