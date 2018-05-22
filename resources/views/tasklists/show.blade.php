@@ -2,25 +2,37 @@
 
 @section('content')
 
-    <h1>id = {{ $task->id }} のタスク詳細ページ</h1>
+            @if (Auth::user()->id == $user->id)
+                  {!! Form::open(['route' => 'tasklists.store']) !!}
+                      <div class="form-group">
+                          {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
+                          {!! Form::submit('Post', ['class' => 'btn btn-primary btn-block']) !!}
+                      </div>
+                  {!! Form::close() !!}
+            @endif
+            @if (count($tasklists) > 0)
+                @include('tasklists.tasklists', ['tasklists' => $tasklists])
+            @endif
+            
+    <h1>id = {{ $tasklists->id }} のタスク詳細ページ</h1>
     <table class="table table-bordered">
         <tr>
             <th>id</th>
-            <td>{{ $task->id }}</td>
+            <td>{{ $tasklists->id }}</td>
         </tr>
         <tr>
             <th>ステータス</th>
-            <td>{{ $task->title }}</td>
+            <td>{{ $tasklists->title }}</td>
         </tr>
         <tr>
             <th>タスク</th>
-            <td>{{ $task->content }}</td>
+            <td>{{ $tasklists->content }}</td>
         </tr>
     </table>
 
- {!! link_to_route('tasks.edit', 'このタスク編集', ['id' => $task->id], ['class' => 'btn btn-default']) !!}
+ {!! link_to_route('tasklists.edit', 'このタスク編集', ['id' => $tasklists->id], ['class' => 'btn btn-default']) !!}
 
-  {!! Form::model($task, ['route' => ['tasks.destroy', $task->id], 'method' => 'delete']) !!}
+  {!! Form::model($tasklists, ['route' => ['tasklists.destroy', $tasklists->id], 'method' => 'delete']) !!}
         {!! Form::submit('削除', ['class' => 'btn btn-danger']) !!}
     {!! Form::close() !!}
 
