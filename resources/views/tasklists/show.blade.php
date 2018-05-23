@@ -1,19 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-            @if (Auth::user()->id == $user->id)
-                  {!! Form::open(['route' => 'tasklists.store']) !!}
-                      <div class="form-group">
-                          {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
-                          {!! Form::submit('Post', ['class' => 'btn btn-primary btn-block']) !!}
-                      </div>
-                  {!! Form::close() !!}
-            @endif
-            @if (count($tasklists) > 0)
-                @include('tasklists.tasklists', ['tasklists' => $tasklists])
-            @endif
-            
     <h1>id = {{ $tasklists->id }} のタスク詳細ページ</h1>
     <table class="table table-bordered">
         <tr>
@@ -22,7 +9,7 @@
         </tr>
         <tr>
             <th>ステータス</th>
-            <td>{{ $tasklists->title }}</td>
+            <td>{{ $tasklists->status }}</td>
         </tr>
         <tr>
             <th>タスク</th>

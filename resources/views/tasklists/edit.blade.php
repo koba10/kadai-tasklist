@@ -2,10 +2,10 @@
 
 @section('content')
 
-    <h1>id: {{ $task->id }} のタスク編集ページ</h1>
+    <h1>id = {{ $tasklists->id }} のタスク編集ページ</h1>
 <div class="row">
         <div class="col-xs-6">
-    {!! Form::model($task, ['route' => ['tasks.update', $task->id], 'method' => 'put']) !!}
+    {!! Form::model($tasklists, ['route' => ['tasklists.update', $tasklists->id], 'method' => 'put']) !!}
                 <div class="form-group">
                     {!! Form::label('status', 'ステータス:') !!}
                     {!! Form::text('status', null, ['class' => 'form-control']) !!}

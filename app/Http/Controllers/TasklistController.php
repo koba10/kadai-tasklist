@@ -30,10 +30,14 @@ class TasklistController extends Controller
     
      public function show($id)
     {
-        $tasklist = Tasklist::find($id);
-
+        $user = \Auth::user();
+        $tasklists = Tasklist::find($id);
+        $data = [
+                'user' => $user,
+                'tasklists' => $tasklists,
+            ];
         return view('tasklists.show', [
-            'tasklist' => $tasklist,
+            'tasklists' => $tasklists,
         ]);
     }
     
@@ -61,10 +65,10 @@ class TasklistController extends Controller
     
     public function edit($id)
     {
-        $tasklist = Tasklist::find($id);
+        $tasklists = Tasklist::find($id);
 
         return view('tasklists.edit', [
-            'tasklist' => $tasklist,
+            'tasklists' => $tasklists,
         ]);
     }
     
